@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder //链式调用
-public class ExecuteRequest {
+public class ExecuteCodeRequest {
 
     /**
      * 输入用例

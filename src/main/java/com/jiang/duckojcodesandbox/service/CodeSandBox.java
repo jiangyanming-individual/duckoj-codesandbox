@@ -2,8 +2,8 @@ package com.jiang.duckojcodesandbox.service;
 
 
 
-import com.jiang.duckojcodesandbox.model.ExecuteRequest;
-import com.jiang.duckojcodesandbox.model.ExecuteResponse;
+import com.jiang.duckojcodesandbox.model.ExecuteCodeRequest;
+import com.jiang.duckojcodesandbox.model.ExecuteCodeResponse;
 
 import java.io.IOException;
 
@@ -14,5 +14,5 @@ public interface CodeSandBox {
      * @param executeRequest
      * @return
      */
-    ExecuteResponse doExecute(ExecuteRequest executeRequest) throws IOException;
+    ExecuteCodeResponse doExecute(ExecuteCodeRequest executeRequest) throws IOException;
 }

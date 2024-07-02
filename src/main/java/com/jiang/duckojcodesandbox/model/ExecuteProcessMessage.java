@@ -18,4 +18,6 @@ public class ExecuteProcessMessage {
     private String errorMessage;
 
     private Long time;
+
+    private Long memory;
 }

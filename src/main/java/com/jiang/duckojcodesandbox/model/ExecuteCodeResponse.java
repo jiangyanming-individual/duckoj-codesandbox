@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ExecuteResponse {
+public class ExecuteCodeResponse {
 
     /**
      * 输入结果：
