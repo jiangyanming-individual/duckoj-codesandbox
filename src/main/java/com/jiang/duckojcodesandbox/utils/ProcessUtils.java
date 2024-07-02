@@ -1,19 +1,23 @@
 package com.jiang.duckojcodesandbox.utils;
 
 
+import cn.hutool.core.util.StrUtil;
 import com.jiang.duckojcodesandbox.model.ExecuteProcessMessage;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.StopWatch;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 封装进程工具类：
  */
 public class ProcessUtils {
 
-    
+
     /**
      * 进程操作：
      *
@@ -107,10 +111,12 @@ public class ProcessUtils {
                 bufferedReader = new BufferedReader(inputStreamReader);
                 StringBuffer compileOutputBuffer = new StringBuffer();
                 String readLine;
+
+                List<String> outputList = new ArrayList<String>();
                 while ((readLine = bufferedReader.readLine()) != null) {
-                    compileOutputBuffer.append(readLine);
+                    outputList.add(readLine);
                 }
-                executeProcessMessage.setMessage(compileOutputBuffer.toString());
+                executeProcessMessage.setMessage(StringUtils.join(outputList, "\n"));
                 System.out.println(executeProcessMessage);
             } else {
                 System.out.println(operateName + "失败,错误码为：" + exitValue);
@@ -120,22 +126,25 @@ public class ProcessUtils {
                 StringBuffer compileOutputBuffer = new StringBuffer();
                 //逐行读取数据
                 String outputReadLine;
+                List<String> outputList = new ArrayList<String>();
                 while ((outputReadLine = bufferedReader.readLine()) != null) {
-                    compileOutputBuffer.append(outputReadLine);
+                    outputList.add(outputReadLine);
                 }
-                executeProcessMessage.setMessage(compileOutputBuffer.toString());
+                executeProcessMessage.setMessage(StringUtils.join(outputList, "\n"));
 //                System.out.println(executeProcessMessage);
                 //编译失败输出
                 inputStreamReader = new InputStreamReader(process.getErrorStream());
                 errorBufferedReader = new BufferedReader(inputStreamReader);
                 StringBuffer compileErrorOutputBuffer = new StringBuffer();
+                List<String> errorOutputList = new ArrayList();
                 //逐行读取数据
                 String errorReadLine;
                 while ((errorReadLine = errorBufferedReader.readLine()) != null) {
-                    compileErrorOutputBuffer.append(errorReadLine);
+                    errorOutputList.add(errorReadLine);
                 }
+
                 //设置错误信息
-                executeProcessMessage.setErrorMessage(compileErrorOutputBuffer.toString());
+                executeProcessMessage.setErrorMessage(StringUtils.join(errorOutputList, "\n"));
                 System.out.println(executeProcessMessage);
             }
         } catch (Exception e) {

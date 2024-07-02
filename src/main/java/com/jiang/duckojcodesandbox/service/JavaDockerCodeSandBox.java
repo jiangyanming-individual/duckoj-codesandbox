@@ -13,6 +13,7 @@ import com.jiang.duckojcodesandbox.model.ExecuteProcessMessage;
 import com.jiang.duckojcodesandbox.model.ExecuteCodeRequest;
 import com.jiang.duckojcodesandbox.model.ExecuteCodeResponse;
 import com.jiang.duckojcodesandbox.model.JudgeInfo;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
 import java.io.Closeable;
@@ -27,6 +28,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * java原生实现的代码沙箱
  */
+
+@Component
 public class JavaDockerCodeSandBox extends JavaCodeSandBoxTemplate {
 
     /**

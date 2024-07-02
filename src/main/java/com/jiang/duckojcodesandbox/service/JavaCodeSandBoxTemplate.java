@@ -64,7 +64,6 @@ public abstract class JavaCodeSandBoxTemplate implements CodeSandBox {
         String userJavaCodePath = userCodeParentPath + File.separator + GLOBAL_JAVA_CLASS_NAME;
         //写入文件
         File userCodeFile = FileUtil.writeString(submitCode, userJavaCodePath, StandardCharsets.UTF_8);
-
         return userCodeFile;
     }
 
@@ -96,8 +95,8 @@ public abstract class JavaCodeSandBoxTemplate implements CodeSandBox {
         String userCodeParentPath = userCodeFile.getParentFile().getAbsolutePath();
         List<ExecuteProcessMessage> executeProcessMessageList = new ArrayList<>();
         for (String inputArgs : inputList) {
-            //加入安全管理器：
-            String runCmd = String.format("java -Xmx256 -Dfile.encoding=UTF-8 -cp %s Main %s", userCodeParentPath, inputArgs);
+            //限制最大内存空间：
+            String runCmd = String.format("java -Xmx256m -Dfile.encoding=UTF-8 -cp %s Main %s", userCodeParentPath, inputArgs);
             //执行进程：
             try {
                 Process runProcess = Runtime.getRuntime().exec(runCmd);

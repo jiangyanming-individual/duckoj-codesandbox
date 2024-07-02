@@ -9,6 +9,7 @@ import com.jiang.duckojcodesandbox.model.ExecuteCodeRequest;
 import com.jiang.duckojcodesandbox.model.ExecuteCodeResponse;
 import com.jiang.duckojcodesandbox.model.JudgeInfo;
 import com.jiang.duckojcodesandbox.utils.ProcessUtils;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
@@ -20,6 +21,7 @@ import java.util.UUID;
 /**
  * java原生实现的代码沙箱
  */
+@Component
 public class JavaNativeCodeSandBoxOld implements CodeSandBox {
 
 

@@ -11,8 +11,8 @@ public interface CodeSandBox {
 
     /**
      * 执行代码：
-     * @param executeRequest
+     * @param executeCodeRequest
      * @return
      */
-    ExecuteCodeResponse doExecute(ExecuteCodeRequest executeRequest) throws IOException;
+    ExecuteCodeResponse doExecute(ExecuteCodeRequest executeCodeRequest) throws IOException;
 }
